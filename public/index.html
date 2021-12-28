@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="camouflage">
+      <button style="background-color: tomato" class="button" id="btn1">
+        Hello
+      </button>
+      <button style="background-color: lightgreen" class="button" id="btn2">
+        Hi
+      </button>
+      <button style="background-color: steelblue" class="button" id="btn3">
+        No
+      </button>
+      <button style="background-color: orange" class="button" id="btn4">
+        Bye
+      </button>
+    </div>
+    <div class="talkingSection">
+      <!-- <div class="greenDot" id="greenDot"></div> -->
+      <!-- <img
+        src="images/right.png"
+        id="right-arrow"
+        onclick="moveRight()"
+        alt="moveRight"
+      />
+
+      <img
+        src="images/left.png"
+        id="left-arrow"
+        onclick="moveLeft()"
+        alt="moveLeft"
+      /> -->
+
+      <div autocomplete="off" class="form" id="form">
+        <div class="chat-section" id="chat-section">
+          <div class="header" id="header">Chats</div>
+          <div class="online selectedChannel" id="chatgeneral">
+            <img src="#" height="80%" alt="" />
+            <div class="online-name">Chat</div>
+            <div class="newMessage" id="newMessage">0</div>
+          </div>
+        </div>
+        <div class="container" id="container">
+          <!-- <img
+            src="https://thumbs.dreamstime.com/b/social-media-doodle-seamless-pattern-social-media-doodle-seamless-pattern-repeated-ornament-hand-drawn-elements-white-162559147.jpg"
+            alt=""
+            class="doodle"
+          /> -->
+          <!-- <div class="header" id="headerGeneral">Public Chat</div> -->
+          <div class="messages" id="general"></div>
+          <div class="footer">
+            <div class="gifMenu">
+              <input
+                type="text"
+                id="inp"
+                placeholder="gif name you want to search"
+              />
+              <button id="btn" onclick="getGif()">Get Gif</button>
+              <div class="gifBox" id="gifBox"></div>
+            </div>
+            <img
+              src="images/cancel.png"
+              id="cancel-gif-menu"
+              onclick="cancelGifMenu()"
+              alt=""
+              srcset=""
+            />
+            <img
+              src="images/gifIcon.png"
+              onclick="gifMenu()"
+              alt=""
+              srcset=""
+            />
+            <input
+              style="padding: 5px"
+              placeholder="Message..."
+              type="text"
+              id="input"
+              class="input"
+              autocomplete="off"
+            />
+            <img
+              src="images/Send_PaperPlane_Arrow.png"
+              onclick="donoKoBhejo()"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+    <script>
+      function randomColors(color) {
+        let arr = ["red", "orange", "pink", "lightgreen", "violet"];
+        // let totalColors = arr.length
+        let newColor = arr[Math.floor(Math.random() * arr.length)];
+        return color == newColor ? randomColors(color) : newColor;
+      }
+      // let username;
+      function unlocked() {
+        if (total == 1 || total == 3213) {
+          document.querySelector(".camouflage").style.display = "none";
+
+          document.querySelector(".talkingSection").style.display = "block";
+          username = total == 1 ? "Shizuka" : "Nobita";
+
+          testing.forEach((msg) => {
+            console.log(msg.username, username);
+            if (msg.username == username) {
+              putMessage(msg, "right");
+              // console.log("right");
+            } else {
+              putMessage(msg, "left");
+              // console.log(msg.username);
+            }
+          });
+          document.getElementById("input").focus();
+        }
+      }
+
+      let total = 0;
+
+      document.getElementById("btn1").addEventListener("click", (e) => {
+        e.target.style.backgroundColor = randomColors(
+          e.target.style.backgroundColor
+        );
+        total += 1;
+
+        unlocked();
+      });
+      document.getElementById("btn2").addEventListener("click", (e) => {
+        e.target.style.backgroundColor = randomColors(
+          e.target.style.backgroundColor
+        );
+        total += 10;
+        unlocked();
+      });
+
+      document.getElementById("btn3").addEventListener("click", (e) => {
+        e.target.style.backgroundColor = randomColors(
+          e.target.style.backgroundColor
+        );
+        total += 100;
+        unlocked();
+      });
+
+      document.getElementById("btn4").addEventListener("click", (e) => {
+        e.target.style.backgroundColor = randomColors(
+          e.target.style.backgroundColor
+        );
+        total += 1000;
+        unlocked();
+      });
+    </script>
+  </body>
+</html>
